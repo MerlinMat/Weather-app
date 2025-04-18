@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather Forecast App</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./src/input.css">
+</head>
+<body class="min-h-screen bg-gradient-to-t from-blue-100 to to-blue-200 font-serif p-3">
+    <main class="container">
+        <!---header section-->
+        <header class="header sticky flex flex-col justify-start md:flex-row md:justify-between mb-2 p-4">
+            <h2 class="text-3xl font-bold">Weather</h2>
+            <section class="weather-input flex flex-col  md:flex-row md:justify-between mb-2 p-4">
+                <input type="text" name="city" id="city_input" class="border-0 p-3" placeholder="Enter city name">
+                <button type="button" id="searchBtn" class="border-0 p-3 bg-blue-100 rounded-xl m-2">
+                    <i class="fa-regular fa-search"></i>Search
+                </button>
+                <button type="button" id="locationBtn" class="bg-blue-100 rounded-xl p-3">
+                    <i class="bx bx-target-lock"></i>Current Location
+                </button>
+                <div class="dropdown border-0 p-3 bg-blue-100 rounded-xl" id="dropdown-menu"></div>
+            </section>
+            
+        </header>
+        <div class="weather-data grid grid-cols-3  lg:grid-cols-4 gap-4">
+            <!---left side display-->
+            <div class="weather-left col-span-1">
+                <div class="card p-3 border-2 mb-2 bg-blue-200">
+                    <div class="current-weather flex justify-between items-center">
+                        <div class="details">
+                            <p class="font-bold">Now</p>
+                            <h2>__&deg;C</h2>
+                            <p>__</p>
+                        </div>
+                        <div class="weather-icon">
+                            <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-footer mb-2 mt-2">
+                        <p><i class="fa-light fa-calendar"></i>_____</p>
+                        <p><i class="fa-light fa-location-dot"></i>_____</p>
+                    </div>
+                </div>
+                <div class="card bg-blue-200">
+                    <h2 class="font-bold">5 Days Forecast</h2>
+                    <div class="day-forecast">
+                        <div class="forecast-item grid grid-cols-3 mb-2 place-items-center">
+                            <div class="icon-wrapper flex items-center">
+                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                <span>____&deg;C</span>
+                            </div>
+                            <p>____</p>
+                            <p>____</p>
+                        </div>
+                        <div class="forecast-item grid grid-cols-3 mb-2 place-items-center">
+                            <div class="icon-wrapper flex items-center">
+                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                <span>____&deg;C</span>
+                            </div>
+                            <p>____</p>
+                            <p>____</p>
+                        </div>
+                        <div class="forecast-item grid grid-cols-3 mb-2 place-items-center">
+                            <div class="icon-wrapper flex items-center">
+                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                <span>____&deg;C</span>
+                            </div>
+                            <p>____</p>
+                            <p>____</p>
+                        </div>
+                        <div class="forecast-item grid grid-cols-3 mb-2 place-items-center">
+                            <div class="icon-wrapper flex items-center">
+                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                <span>____&deg;C</span>
+                            </div>
+                            <p>____</p>
+                            <p>____</p>
+                        </div>
+                        <div class="forecast-item grid grid-cols-3 mb-2 place-items-center">
+                            <div class="icon-wrapper flex items-center">
+                                <img src="https://openweathermap.org/img/wn/02d.png" alt="">
+                                <span>____&deg;C</span>
+                            </div>
+                            <p>____</p>
+                            <p>____</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----right side display-->
+            <div class="weather-right ml-2">
+                <h2 class="mb-3 text-2xl">Today's Highlights</h2>
+                <div class="highlights ">
+                    
+                    <div class="card mt-3 bg-blue-200">
+                        <div class="card-head">
+                            <p>Humidity</p>
+                        </div>
+                        <div class="card-item flex justify-between">
+                            <i class="fa-light fa-droplet fa-2x"></i>
+                            <h2 id="humidityVal">____%</h2>
+                        </div>
+                    </div>
+                    <div class="card mt-3 bg-blue-200">
+                        <div class="card-head">
+                            <p>Pressure</p>
+                        </div>
+                        <div class="card-item flex justify-between">
+                            <i class="fa-light fa-compass fa-2x"></i>
+                            <h2 id="pressureVal">____hPa</h2>
+                        </div>
+                    </div>
+                    <div class="card mt-3 bg-blue-200">
+                        <div class="card-head">
+                            <p>Visibility</p>
+                        </div>
+                        <div class="card-item flex justify-between">
+                            <i class="fa-light fa-eye fa-2x"></i>
+                            <h2 id="visibilityVal">____km</h2>
+                        </div>
+                    </div>
+                    <div class="card mt-3 bg-blue-200">
+                        <div class="card-head">
+                            <p>Wind Speed</p>
+                        </div>
+                        <div class="card-item flex justify-between">
+                            <i class="fa-light fa-location-arrow fa-2x"></i>
+                            <h2 id="windSpeedVal">____m/s</h2>
+                        </div>
+                    </div>
+                    <div class="card mt-3 bg-blue-200">
+                        <div class="card-head">
+                            <p>Feels like</p>
+                        </div>
+                        <div class="card-item flex justify-between">
+                            <i class="fa-light fa-temperature-list fa-2x"></i>
+                            <h2 id="feelsVal">____&deg;C</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
